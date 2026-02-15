@@ -117,6 +117,60 @@ std::vector<std::pair<int, int>> generateEdges(const std::vector<double> &weight
     return result;
 }
 
+std::vector<double> readWeights(int n, const std::string &file) {
+    auto result = std::vector<double>(n);
+
+    std::ifstream f{file};
+    if(!f.is_open())
+        throw std::runtime_error{"Error: failed to open file \"" + file + '\"'};
+
+    int i = 0;
+    double w;
+    while (f >> w) {
+        if (i >= n)
+            throw std::runtime_error{"Error: file \"" + file + "\" must have exactly " + std::to_string(n) + " lines. It has more."};
+        result[i] = w;
+        i++;
+    }
+    if(n != i)
+        throw std::runtime_error{"Error: file \"" + file + "\" must have exactly " + std::to_string(n) + " lines. It has fewer."};
+
+    return result;
+}
+
+std::vector<std::vector<double>> readPositions(int n, int dimension, const std::string &file) {
+    auto result = std::vector<std::vector<double>>(n, std::vector<double>(dimension));
+
+    std::ifstream f{file};
+    if(!f.is_open())
+        throw std::runtime_error{"Error: failed to open file \"" + file + '\"'};
+
+    int i = 0;
+    std::string line;
+    while (std::getline(f, line)) {
+        if (i >= n)
+            throw std::runtime_error{"Error: file \"" + file + "\" must have exactly " + std::to_string(n) + " lines. It has more."};
+        int j = 0;
+        std::istringstream iss(line);
+        double v;
+        while (iss >> v) {
+            if (j >= dimension) 
+                throw std::runtime_error{"Error: file \"" + file + "\" must have exactly " +
+                    std::to_string(dimension) + " values per line. Line " + std::to_string(i+1) + " has more."};
+            result[i][j] = v;
+            j++;
+        }
+        if(dimension != j)
+            throw std::runtime_error{"Error: file \"" + file + "\" must have exactly " +
+                std::to_string(dimension) + " values per line. Line " + std::to_string(i+1) +
+                " has fewer."};
+        i++;
+    }
+    if(n != i)
+        throw std::runtime_error{"Error: file \"" + file + "\" must have exactly " + std::to_string(n) + " lines. It has fewer."};
+
+    return result;
+}
 
 void saveDot(const std::vector<double> &weights, const std::vector<std::vector<double>> &positions,
              const std::vector<std::pair<int, int>> &graph, const std::string &file) {

@@ -88,19 +88,31 @@ The GIRG generator features the following input parameters.
 ```
 ./gengirg --help
 usage: ./gengirg
-		[-n anInt]          // number of nodes                          default 10000 
-        	[-d anInt]          // dimension of geometry    range [1,5]     default 1
-		[-ple aFloat]       // power law exponent       range (2,3]     default 2.5
-		[-alpha aFloat]     // model parameter          range (1,inf]   default infinity
-		[-deg aFloat]       // average degree           range [1,n)     default 10
-		[-wseed anInt]      // weight seed                              default 12
-		[-pseed anInt]      // position seed                            default 130
-		[-sseed anInt]      // sampling seed                            default 1400
-		[-threads anInt]    // number of threads to use                 default 1
-		[-file aString]     // file name for output (w/o ext)           default "graph"
-		[-dot 0|1]          // write result as dot (.dot)               default 0
-		[-edge 0|1]         // write result as edgelist (.txt)          default 0
+		[-n anInt]                      // number of nodes                          default 10000
+		[-d anInt]                      // dimension of geometry    range [1,5]     default 1
+		[-ple aFloat]                   // power law exponent       range (2,3]     default 2.5
+		[-alpha aFloat]                 // model parameter          range (1,inf]   default infinity
+		[-deg aFloat]                   // average degree           range [1,n)     default 10
+		[-wseed anInt]                  // weight seed                              default 12
+		[-pseed anInt]                  // position seed                            default 130
+		[-sseed anInt]                  // sampling seed                            default 1400
+		[-threads anInt]                // number of threads to use                 default 1
+		[-file aString]                 // file name for output (w/o ext)           default "graph"
+		[-wMethod generate|read|fixed]  // method to obtain weights                 default generate
+		[-wFile aString]                // file name for input of weights           default "in-weights.txt"
+		[-wFixed aFloat]                // fixed weight value                       default 40.0
+		[-pMethod generate|read]        // method to obtain positions               default generate
+		[-pFile aString]                // file name for input of positions         default "in-positions.txt"
+		[-noscale 0|1]                  // disable weight scaling                   default 0
+		[-dot 0|1]                      // write result as dot (.dot)               default 0
+		[-edge 0|1]                     // write result as edgelist (.txt)          default 0
 ```
+
+- For `wMethod` = `generate`, no arguments are needed
+- For `wMethod` = `read`, `wFile` is used; see below for the syntax
+- For `wMethod` = `fixed`, `wFixed` is used
+- For `pMethod` = `generate`, no arguments are needed
+- For `pMethod` = `read`, `pFile` is used; see below for the syntax
 
 The HRG generator features the following input parameters.
 ```
@@ -119,6 +131,48 @@ usage: ./genhrg
 		[-edge 0|1]         // write result as edgelist (.txt)          default 0
 		[-coord 0|1]        // write hyp. coordinates (.hyp)            default 0
 ```
+
+# Example input/output files
+
+## Example input: in-weights.txt (`-wFile`)
+Arguments: `-n 2 -wMethod read -wFile in-weights.txt`
+
+```
+40.0
+40.0
+```
+
+## Example input: in-positions.txt (`-pFile`)
+Arguments: `-n 3 -d 2 -pMethod read -pFile in-positions.txt`
+
+```
+0.1 0.1
+0.1 0.1
+0.1 0.1
+```
+
+## Example output: edgelist (`-edge 1`)
+Syntax first line: `[number of nodes] [number of edges]`
+
+```txt
+2 1
+
+0 1
+```
+
+## Example output: dotfile / graphviz (`-dot 1`)
+```txt
+graph girg {
+	overlap=scale;
+
+	0 [label="40.00", pos="0.250823,0.268325"];
+	1 [label="40.00", pos="0.404264,0.183868"];
+
+	0	-- 1;
+}
+```
+
+
 
 # C++ Library
 

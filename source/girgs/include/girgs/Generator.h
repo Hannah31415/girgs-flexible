@@ -90,6 +90,37 @@ GIRGS_API std::vector<std::pair<int,int>> generateEdges(const std::vector<double
 
 /**
  * @brief
+ *  Reads the weights from a file, one weight per line.
+ *
+ * @param n
+ *  The size of the graph. Should match the number of the lines in the file.
+ * @param file
+ *  The path to the file containing the weights.
+ *
+ * @return
+ *  The weights imported from the file.
+ */
+GIRGS_API std::vector<double> readWeights(int n, const std::string &file);
+
+/**
+ * @brief
+ *  Reads the positions from a file, one position per line.
+ *
+ * @param n
+ *  The size of the graph. Should match the number of the lines in the file.
+ * @param dimension
+ *  Dimension of the geometry.
+ * @param file
+ *  The path to the file containing the weights.
+ *
+ * @return
+ *  The positions imported from the file.
+ */
+GIRGS_API std::vector<std::vector<double>> readPositions(int n, int dimension, const std::string &file);
+
+
+/**
+ * @brief
  *  Saves the graph in .dot format (graphviz).
  *  The weight is saved as a label and the coordinates as a position attribute for each Node.
  *

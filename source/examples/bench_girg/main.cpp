@@ -70,6 +70,8 @@ void measure(int dimension, int n, int avgDeg, double alpha, double ple, int thr
                 case 3: measure_edge_generation<3>(weights, positions, alpha, samplingSeed, counter_num_edges, time_pre, time_edges); break;
                 case 4: measure_edge_generation<4>(weights, positions, alpha, samplingSeed, counter_num_edges, time_pre, time_edges); break;
                 case 5: measure_edge_generation<5>(weights, positions, alpha, samplingSeed, counter_num_edges, time_pre, time_edges); break;
+                case 6: measure_edge_generation<6>(weights, positions, alpha, samplingSeed, counter_num_edges, time_pre, time_edges); break;
+                case 7: measure_edge_generation<7>(weights, positions, alpha, samplingSeed, counter_num_edges, time_pre, time_edges); break;
                 default: measure_edge_generation<1>(weights, positions, alpha, samplingSeed, counter_num_edges, time_pre, time_edges); break;
             }
         }

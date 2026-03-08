@@ -105,6 +105,8 @@ std::vector<std::pair<int, int>> generateEdges(const std::vector<double> &weight
         case 3: makeSpatialTree<3>(weights, positions, alpha, addEdge).generateEdges(samplingSeed); break;
         case 4: makeSpatialTree<4>(weights, positions, alpha, addEdge).generateEdges(samplingSeed); break;
         case 5: makeSpatialTree<5>(weights, positions, alpha, addEdge).generateEdges(samplingSeed); break;
+        case 6: makeSpatialTree<6>(weights, positions, alpha, addEdge).generateEdges(samplingSeed); break;
+        case 7: makeSpatialTree<7>(weights, positions, alpha, addEdge).generateEdges(samplingSeed); break;
         default:
             std::cout << "Dimension " << dimension << " not supported." << std::endl;
             std::cout << "No edges generated." << std::endl;

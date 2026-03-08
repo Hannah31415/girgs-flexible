@@ -82,6 +82,8 @@ TEST_F(SpatialTreeCoordinateHelper_test, testTreeStructure)
     testTreeStructure<3>( 4);
     testTreeStructure<4>( 3);
     testTreeStructure<5>( 2);
+    testTreeStructure<6>( 2);
+    testTreeStructure<7>( 2);
 }
 
 
@@ -92,6 +94,8 @@ TEST_F(SpatialTreeCoordinateHelper_test, testCoordMapping)
     testCoordMapping<3>( 4);
     testCoordMapping<4>( 3);
     testCoordMapping<5>( 2);
+    testCoordMapping<6>( 2);
+    testCoordMapping<7>( 2);
 }
 
 

@@ -31,12 +31,16 @@ using Implementations = ::testing::Types<
     girgs::BitManipulationDetails::BMI2::Implementation<3>,
     girgs::BitManipulationDetails::BMI2::Implementation<4>,
     girgs::BitManipulationDetails::BMI2::Implementation<5>,
+    girgs::BitManipulationDetails::BMI2::Implementation<6>,
+    girgs::BitManipulationDetails::BMI2::Implementation<7>,
 #endif
     girgs::BitManipulationDetails::Generic::Implementation<1>,
     girgs::BitManipulationDetails::Generic::Implementation<2>,
     girgs::BitManipulationDetails::Generic::Implementation<3>,
     girgs::BitManipulationDetails::Generic::Implementation<4>,
-    girgs::BitManipulationDetails::Generic::Implementation<5>
+    girgs::BitManipulationDetails::Generic::Implementation<5>,
+    girgs::BitManipulationDetails::Generic::Implementation<6>,
+    girgs::BitManipulationDetails::Generic::Implementation<7>
 >;
 
 TYPED_TEST_SUITE(BitManipulationTest, Implementations,);

@@ -30,6 +30,8 @@ static void BM_deposit(benchmark::State& state) {
     BENCHMARK_TEMPLATE2(BM_deposit, X<3>, 3); \
     BENCHMARK_TEMPLATE2(BM_deposit, X<4>, 4); \
     BENCHMARK_TEMPLATE2(BM_deposit, X<5>, 5); \
+    BENCHMARK_TEMPLATE2(BM_deposit, X<6>, 6); \
+    BENCHMARK_TEMPLATE2(BM_deposit, X<7>, 7); \
 
 DEPOSIT_BENCHMARK(girgs::BitManipulationDetails::Generic::Implementation)
 

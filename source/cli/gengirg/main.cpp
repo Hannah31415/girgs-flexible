@@ -68,7 +68,7 @@ int main(int argc, char* argv[]) {
     if (argc < 2 || 0 == strcmp(argv[1], "--help") || 0 == strcmp(argv[1], "-help")) {
         clog << "usage: ./gengirg\n"
             << "\t\t[-n anInt]                      // number of nodes                          default 10000\n"
-            << "\t\t[-d anInt]                      // dimension of geometry    range [1,5]     default 1\n"
+            << "\t\t[-d anInt]                      // dimension of geometry    range [1,7]     default 1\n"
             << "\t\t[-ple aFloat]                   // power law exponent       range (2,3]     default 2.5\n"
             << "\t\t[-alpha aFloat]                 // model parameter          range (1,inf]   default infinity\n"
             << "\t\t[-deg aFloat]                   // average degree           range [1,n)     default 10\n"
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]) {
     // log params and range checks
     cout << "using:\n";
     logParam(n, "n");
-    rangeCheck(d, 1, 5, "d");
+    rangeCheck(d, 1, 7, "d");
     rangeCheck(ple, 2.0, 3.0, "ple", true, false);
     rangeCheck(alpha, 1.0, std::numeric_limits<double>::infinity(), "alpha", true);
     rangeCheck(deg, 1.0, n-1.0, "deg");
